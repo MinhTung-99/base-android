@@ -1,4 +1,4 @@
-package com.base_clean_architecture.base
+package com.base_clean_architecture.base.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,22 +27,6 @@ abstract class BaseAdapter<VH : RecyclerView.ViewHolder, E, B : ViewBinding> :
 
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
-
-    fun addData(list: List<E>, index: Int) {
-
-        listItem.addAll(index, list)
-        notifyItemRangeChanged(index, list.size)
-    }
-
-    fun appendWhenLoadMore(list: List<E>) {
-        if (isLoadMore) {
-            listItem.removeLast();
-            isLoadMore = false
-        }
-
-        listItem.addAll(listItem.size - 1, list)
-        notifyItemRangeChanged(listItem.size - 1, list.size)
-    }
 
     override fun getItemViewType(position: Int): Int {
         return if (listItem[position] == null) VIEW_TYPE_LOADING else VIEW_TYPE_ITEM

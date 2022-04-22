@@ -1,10 +1,9 @@
 package com.base_clean_architecture.coffee
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.base_clean_architecture.base.BaseAdapter
+import com.base_clean_architecture.base.adapter.BaseAdapter
 import com.base_clean_architecture.data.response.Coffee
 import com.base_clean_architecture.databinding.ItemCoffeeBinding
 
