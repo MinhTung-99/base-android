@@ -21,7 +21,7 @@ class ThirdFragment: BaseFragment<ThirdViewModel, FragmentThirdBinding>() {
         super.setupView()
 
         binding.btnBackToRoot.setOnClickListener {
-            navigation?.pop(NavigationImpl.ROOT_TAG)
+            navigation?.popToRoot()
         }
     }
 }

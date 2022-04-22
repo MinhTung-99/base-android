@@ -5,13 +5,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClient {
     companion object {
-        fun provideRetrofit(/*okHttpClient: OkHttpClient*/): ApiService {
-            return Retrofit.Builder()
-                .baseUrl("https://api.sampleapis.com")
-                //.client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(ApiService::class.java)
+
+        var apiService: ApiService? = null
+
+        fun provideRetrofit(): ApiService {
+            if (apiService == null) {
+                apiService = Retrofit.Builder()
+                    .baseUrl("https://api.sampleapis.com")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(ApiService::class.java)
+            }
+            return apiService!!
         }
     }
 }

@@ -14,9 +14,7 @@ class NavigationImpl(
 ) : Navigation {
     override var fragments: MutableList<MyFragment> = mutableListOf()
 
-    companion object {
-        val ROOT_TAG = "${this::class.java.simpleName}_Root"
-    }
+    private val ROOT_TAG = "${this::class.java.simpleName}_Root"
 
     private var fragmentManager: FragmentManager = activity.supportFragmentManager
 
@@ -61,5 +59,10 @@ class NavigationImpl(
         fragments.clear()
         fragmentManager.popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         push(fragment, ROOT_TAG, false)
+    }
+
+    override fun popToRoot() {
+        fragments.removeAll(fragments.subList(1, fragments.size))
+        fragmentManager.popBackStack(ROOT_TAG, 0)
     }
 }

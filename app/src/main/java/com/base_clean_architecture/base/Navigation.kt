@@ -8,4 +8,5 @@ interface Navigation {
     fun push(fragment: MyFragment, tag: String? = null, withAnimation: Boolean = true)
     fun pop(tag: String? = null)
     fun setRoot(fragment: MyFragment)
+    fun popToRoot()
 }
