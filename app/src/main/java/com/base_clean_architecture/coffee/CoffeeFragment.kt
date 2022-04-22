@@ -41,21 +41,19 @@ class CoffeeFragment : BaseFragment<CoffeeViewModel, FragmentLoginBinding>() {
         showProgress(true)
         viewModel.getCoffee()
         viewModel.coffees.observe(this) { coffees ->
+            isLoading = false
             showProgress(false)
-            adapter.setupData(coffees)
+            if (adapter.listItem.isEmpty()) {
+                adapter.setupData(coffees)
+            } else {
+                adapter.appendWhenLoadMore(coffees)
+            }
         }
         binding.rvCoffee.setupLoadMore {
             if (!isLoading) {
+                adapter.loadMore()
                 isLoading = true
-                showProgress(true)
-                CoroutineScope(Dispatchers.IO).launch {
-                    delay(4000L)
-                    isLoading = false
-                    withContext(Dispatchers.Main) {
-                        showProgress(false)
-                        Toast.makeText(requireContext(), "Load more", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                viewModel.getCoffee()
             }
         }
     }

@@ -25,6 +25,21 @@ abstract class BaseAdapter<VH : RecyclerView.ViewHolder, E, B : ViewBinding> :
         notifyItemRangeInserted(listItem.size, list.size)
     }
 
+    fun loadMore(list: List<E>) {
+        listItem.addAll(list)
+        notifyItemRangeInserted(listItem.size, list.size)
+    }
+
+    fun appendWhenLoadMore(list: List<E>) {
+        if (isLoadMore) {
+            listItem.removeLast();
+            isLoadMore = false
+        }
+
+        listItem.addAll(listItem.size - 1, list)
+        notifyItemRangeChanged(listItem.size - 1, list.size)
+    }
+
     private val VIEW_TYPE_ITEM = 0
     private val VIEW_TYPE_LOADING = 1
 
@@ -44,8 +59,7 @@ abstract class BaseAdapter<VH : RecyclerView.ViewHolder, E, B : ViewBinding> :
             }
 
             else -> {
-                val binding =
-                    ItemLoadMoreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                val binding = ItemLoadMoreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 LoadingViewHolder(binding)
             }
         }
