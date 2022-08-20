@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import com.base_clean_architecture.SecondActivity
 import com.base_clean_architecture.base.BaseFragment
 import com.base_clean_architecture.base.adapter.setupLoadMore
@@ -43,10 +42,14 @@ class CoffeeFragment : BaseFragment<CoffeeViewModel, FragmentLoginBinding>() {
         viewModel.coffees.observe(this) { coffees ->
             isLoading = false
             showProgress(false)
+
             if (adapter.listItem.isEmpty()) {
                 adapter.setupData(coffees)
             } else {
-                adapter.appendWhenLoadMore(coffees)
+                CoroutineScope(Dispatchers.Main).launch {
+                    delay(3000)
+                    adapter.appendWhenLoadMore(coffees)
+                }
             }
         }
         binding.rvCoffee.setupLoadMore {

@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MyGit/base-android/app/src/main/res/layout/activity_main.xml" value="0.35052083333333334" />
+        <entry key="..\:/MyGit/base-android/app/src/main/res/layout/activity_second.xml" value="0.23802083333333332" />
+        <entry key="..\:/MyGit/base-android/app/src/main/res/layout/custom_dialog_fragment.xml" value="0.23802083333333332" />
         <entry key="..\:/MyGit/base-android/app/src/main/res/layout/fragment_login.xml" value="0.21354166666666666" />
         <entry key="..\:/Users/MinhTung99/Desktop/base-android/app/src/main/res/layout/activity_main.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/MinhTung99/Desktop/base-android/app/src/main/res/layout/activity_second.xml" value="0.22239583333333332" />

@@ -9,8 +9,8 @@ data class Coffee(
     @SerializedName("description")
     var description: String? = null,
 
-    @SerializedName("ingredients")
-    var ingredients: List<String>? = null,
+    /*@SerializedName("ingredients")
+    var ingredients: List<String>? = null,*/
 
     @SerializedName("id")
     var id: Int? = null

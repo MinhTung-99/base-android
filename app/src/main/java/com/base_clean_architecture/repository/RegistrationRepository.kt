@@ -1,4 +1,4 @@
-package com.base_clean_architecture.domain
+package com.base_clean_architecture.repository
 
 import com.base_clean_architecture.data.response.Coffee
 
