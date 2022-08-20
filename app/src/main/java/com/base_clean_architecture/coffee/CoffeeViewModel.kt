@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.base_clean_architecture.base.BaseViewModel
 import com.base_clean_architecture.data.network.ApiClient
 import com.base_clean_architecture.data.response.Coffee
-import com.base_clean_architecture.repository.impl.RegistrationRepositoryImpl
+import com.base_clean_architecture.data.repository.impl.RegistrationRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.base_clean_architecture.repository
+package com.base_clean_architecture.data.repository
 
 import com.base_clean_architecture.data.response.Coffee
 
