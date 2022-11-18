@@ -11,6 +11,9 @@ import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
 import com.develop.base_android.R
 
+typealias MyFragment = BaseFragment<*>
+typealias MyActivity = BaseActivity<*>
+
 abstract class BaseFragment<B : ViewBinding> : Fragment() {
     lateinit var binding: B
 
@@ -35,55 +38,6 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
         makeViewModel()
         return this.binding.root
     }
-
-    fun pushTo(@IdRes resId: Int, args: Bundle? = null) {
-        binding.root.findNavController().currentDestination?.getAction(resId)?.navOptions?.let {
-            binding.root.findNavController().navigate(
-                resId,
-                args,
-                navOptions { // Use the Kotlin DSL for building NavOptions
-                    anim {
-                        enter = R.anim.enter_from_right
-                        exit = R.anim.exit_to_left
-                        popEnter = R.anim.enter_from_left
-                        popExit = R.anim.exit_to_right
-                    }
-                    popUpTo(it.popUpToId) {
-                        inclusive = it.isPopUpToInclusive()
-                    }
-                }
-            )
-        }
-    }
-
-    fun pushFadeTo(@IdRes resId: Int, args: Bundle? = null) {
-        binding.root.findNavController().currentDestination?.getAction(resId)?.navOptions?.let {
-            binding.root.findNavController().navigate(
-                resId,
-                args,
-                navOptions { // Use the Kotlin DSL for building NavOptions
-                    anim {
-                        enter = R.anim.fade_in
-                        exit = R.anim.fade_out
-                    }
-                    popUpTo(it.popUpToId) {
-                        inclusive = it.isPopUpToInclusive()
-                    }
-                }
-            )
-        }
-    }
-
-    fun popTo(@IdRes destinationId: Int? = null, inclusive: Boolean = false) {
-        binding.root.findNavController().apply {
-            if (destinationId == null) popBackStack()
-            else popBackStack(destinationId, inclusive)
-        }
-    }
-
-    /*fun popToRoot() {
-        mActivity?.rootId?.let { popTo(it, false) }
-    }*/
 }
 
 abstract class BaseVMFragment<V : BaseViewModel, B : ViewBinding> : BaseFragment<B>() {
@@ -93,3 +47,22 @@ abstract class BaseVMFragment<V : BaseViewModel, B : ViewBinding> : BaseFragment
 
     }
 }
+
+val BaseFragment<*>.mActivity: MyActivity?
+    get() = this.activity as? MyActivity
+
+fun BaseFragment<*>.pushTo(
+    @IdRes resId: Int,
+    args: Bundle? = null,
+    anim: PUSH_TYPE = PUSH_TYPE.SLIDE
+) {
+    mActivity?.pushTo(resId, args, anim)
+}
+
+fun BaseFragment<*>.popTo(@IdRes destinationId: Int? = null, inclusive: Boolean = false) {
+    mActivity?.popTo(destinationId, inclusive)
+}
+
+/*fun BaseFragment<*>.popToRoot() {
+    mActivity?.popToRoot()
+}*/

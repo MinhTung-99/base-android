@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.develop.base_android.application.base.BaseVMFragment
+import com.develop.base_android.application.base.popTo
 import com.develop.base_android.databinding.FragmentSignUpBinding
 
 class SignUpFragment : BaseVMFragment<SignUpViewModel, FragmentSignUpBinding>() {

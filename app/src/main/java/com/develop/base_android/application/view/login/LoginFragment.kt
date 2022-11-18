@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.develop.base_android.R
 import com.develop.base_android.application.base.BaseVMFragment
+import com.develop.base_android.application.base.pushTo
 import com.develop.base_android.databinding.FragmentLoginBinding
 
 class LoginFragment: BaseVMFragment<LoginViewModel, FragmentLoginBinding>() {
