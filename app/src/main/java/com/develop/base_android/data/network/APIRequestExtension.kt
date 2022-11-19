@@ -17,8 +17,6 @@ data class Response<T>(
     var data: T?
 )
 
-data class BaseResponse (val code: String?)
-
 //extension
 fun <K, V> Map<K, V?>.filterNotNullValues(): Map<K, V> =
     mapNotNull { (key, value) -> value?.let { key to it } }.toMap()

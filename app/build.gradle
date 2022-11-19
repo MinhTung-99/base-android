@@ -41,13 +41,13 @@ android {
 //                variant.mergeResources.doFirst {
 //                    android.sourceSets.debug.setRoot("src/debug")
 //                }
-                variant.buildConfigField "String", "API_ENDPOINT", "\"https://hokenbox.commude-vietnam.work/\""
+                variant.buildConfigField "String", "API_ENDPOINT", "\"https://api.publicapis.org/\""
                 break
             case "release":
 //                variant.mergeResources.doFirst {
 //                    android.sourceSets.debug.setRoot("src/release")
 //                }
-                variant.buildConfigField "String", "API_ENDPOINT", "\"https://hokenbox.commude-vietnam.work/\""
+                variant.buildConfigField "String", "API_ENDPOINT", "\"https://api.publicapis.org/\""
                 break
         }
     }

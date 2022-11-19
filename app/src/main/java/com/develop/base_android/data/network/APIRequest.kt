@@ -11,6 +11,11 @@ import okhttp3.ResponseBody
 import retrofit2.HttpException
 
 @Keep
+object APIPath {
+    fun entry(): String = "entries"
+}
+
+@Keep
 enum class HTTPError(val code: Int) {
     UNAUTHORIZED(401),
     BAD_REQUEST(400),
@@ -23,8 +28,6 @@ enum class HTTPError(val code: Int) {
 }
 
 class APIRequest(
-    private val service: ApiService,
-    private val serviceNoLogin: ApiServiceNoLogin,
     val gson: Gson
 ) {
     companion object {
@@ -33,33 +36,35 @@ class APIRequest(
 
     inline fun <reified T> request(
         router: ApiRouter,
-        needLogin: Boolean = true
+        apiService: BaseApiService
     ): Flow<T> = flow {
-        emit(gson.fromJson(getMethodCall(router, needLogin).string()))
+        emit(gson.fromJson(getMethodCall(router, apiService).string()))
     }
 
     suspend inline fun <reified T> suspendRequest(
         router: ApiRouter,
-        needLogin: Boolean = true
+        needLogin: BaseApiService
     ): T = gson.fromJson(getMethodCall(router, needLogin).string())
 
-    suspend fun getMethodCall(router: ApiRouter, needLogin: Boolean): ResponseBody =
-        when (router.method) {
-            HTTPMethod.GET -> getService(needLogin)
+    suspend fun getMethodCall(router: ApiRouter, apiService: BaseApiService): ResponseBody {
+        return when (router.method) {
+
+            HTTPMethod.GET -> getService(apiService)
                 .get(router.url(), router.headers, router.parameters)
-            HTTPMethod.POST -> getService(needLogin)
+
+            HTTPMethod.POST -> getService(apiService)
                 .post(router.url(), router.headers, router.parameters)
-            HTTPMethod.PUT -> getService(needLogin)
+            HTTPMethod.PUT -> getService(apiService)
                 .put(router.url(), router.headers, router.parameters)
-            HTTPMethod.DELETE -> getService(needLogin)
+            HTTPMethod.DELETE -> getService(apiService)
                 .delete(router.url(), router.headers, router.parameters)
-            HTTPMethod.IMAGE -> getService(needLogin)
+            HTTPMethod.IMAGE -> getService(apiService)
                 .uploadImage(router.url(), headers = hashMapOf(), router.image)
         }
-
-    private fun getService(needLogin: Boolean): BaseApiService {
-        return if (needLogin) service else serviceNoLogin
     }
+
+    private fun getService(apiService: BaseApiService): BaseApiService = apiService
+
 }
 
 @Keep
@@ -75,18 +80,10 @@ data class ApiRouter(
     val image: MultipartBody.Part? = null,
 )
 
-val BaseHeader = hashMapOf(
-    "language" to "jp",
-    "platform" to "android",
-    "app-version" to BuildConfig.VERSION_NAME,
-)
-
 val JsonFormatter = hashMapOf(
     "accept" to "application/json",
     "Content-Type" to "application/json",
-).apply {
-    this.putAll(BaseHeader)
-}
+)
 
 @Keep
 fun ApiRouter.url(): String = APIRequest.BASE_URL + path

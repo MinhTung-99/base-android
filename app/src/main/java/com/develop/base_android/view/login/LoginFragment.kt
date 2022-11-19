@@ -10,7 +10,7 @@ import com.develop.base_android.application.base.pushTo
 import com.develop.base_android.databinding.FragmentLoginBinding
 
 class LoginFragment: BaseVMFragment<LoginViewModel, FragmentLoginBinding>() {
-    override val viewModel: LoginViewModel by viewModels()
+    override val viewModel: LoginViewModel by viewModels{LoginViewModel.Factory}
 
     override fun makeViewBinding(
         inflater: LayoutInflater,
@@ -23,6 +23,8 @@ class LoginFragment: BaseVMFragment<LoginViewModel, FragmentLoginBinding>() {
 
     override fun setupView() {
         super.setupView()
+
+        viewModel.getEntry()
 
         binding.txtLogin.setOnClickListener {
            // Settings.ACCESS_TOKEN.put("TOKEN")

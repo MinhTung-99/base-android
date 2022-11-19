@@ -7,9 +7,9 @@ import retrofit2.http.*
 typealias Parameters = HashMap<String, Any>
 typealias Headers = HashMap<String, String>
 
-interface ApiService : BaseApiService
+interface ApiServiceNotToken : BaseApiService
 
-interface ApiServiceNoLogin : BaseApiService
+interface ApiServiceWithToken : BaseApiService
 
 interface RefreshTokenApiService : BaseApiService
 
