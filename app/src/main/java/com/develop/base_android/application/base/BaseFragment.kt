@@ -45,6 +45,9 @@ abstract class BaseVMFragment<V : BaseViewModel, B : ViewBinding> : BaseFragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        viewModel.isShowProgress.observe(this) { isShow ->
+            (mActivity as? BaseVMActivity<*, *>)?.viewModel?.isShowProgress?.postValue(isShow)
+        }
     }
 }
 

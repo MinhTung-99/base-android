@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.develop.base_android.application.base.BaseViewModel
+import com.develop.base_android.application.base.hideProgress
+import com.develop.base_android.application.base.showProgress
 import com.develop.base_android.data.network.APIRequest
 import com.develop.base_android.data.network.getEntry
 import com.develop.base_android.injection.gson
@@ -18,11 +20,13 @@ class LoginViewModel(
 
     fun getEntry() {
         viewModelScope.launch {
+            showProgress()
             apiRequest.getEntry()
                 .catch {
 
                 }
                 .collect {
+                    hideProgress()
                     Log.d("KMSHSUPP", it.entries?.get(0)?.Description.toString())
                 }
         }

@@ -1,6 +1,7 @@
 package com.develop.base_android.application.base
 
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -9,12 +10,15 @@ import androidx.navigation.NavController
 import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
 import com.develop.base_android.R
+import com.develop.base_android.application.resource.customview.ProgressView
 
 abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
     lateinit var binding: B
 
     var navContainer: NavController? = null
+
+    internal var progress: ProgressView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,29 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
 abstract class BaseVMActivity<VM : BaseViewModel, B : ViewBinding> : BaseActivity<B>() {
     abstract val viewModel: VM
+
+    override fun setupView(savedInstanceState: Bundle?) {
+        super.setupView(savedInstanceState)
+
+        viewModel.isShowProgress.observe(this) { isShow ->
+            showProgress(isShow)
+        }
+    }
+
+    private fun showProgress(isShow: Boolean) {
+        if (isShow) {
+            if (progress == null) {
+                progress = ProgressView()
+            }
+            if (progress?.isVisible == true) {
+                return
+            }
+            progress?.show(supportFragmentManager, "")
+        } else {
+            progress?.dismiss()
+            progress = null
+        }
+    }
 }
 
 enum class PUSH_TYPE(val anim: AnimBuilder) {
