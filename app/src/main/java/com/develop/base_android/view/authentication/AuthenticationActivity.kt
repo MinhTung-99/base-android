@@ -1,4 +1,4 @@
-package com.develop.base_android.application.view.authentication
+package com.develop.base_android.view.authentication
 
 import android.os.Bundle
 import androidx.activity.viewModels

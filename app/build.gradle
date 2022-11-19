@@ -34,6 +34,23 @@ android {
     viewBinding {
         enabled = true
     }
+
+    applicationVariants.all { variant ->
+        switch (variant.getName()) {
+            case "debug":
+//                variant.mergeResources.doFirst {
+//                    android.sourceSets.debug.setRoot("src/debug")
+//                }
+                variant.buildConfigField "String", "API_ENDPOINT", "\"https://hokenbox.commude-vietnam.work/\""
+                break
+            case "release":
+//                variant.mergeResources.doFirst {
+//                    android.sourceSets.debug.setRoot("src/release")
+//                }
+                variant.buildConfigField "String", "API_ENDPOINT", "\"https://hokenbox.commude-vietnam.work/\""
+                break
+        }
+    }
 }
 
 dependencies {
@@ -58,4 +75,11 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
     implementation "androidx.fragment:fragment:1.5.4"
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+
+    implementation 'org.jetbrains.kotlin:kotlin-reflect:1.7.20'
 }

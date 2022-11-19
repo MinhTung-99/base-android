@@ -1,4 +1,4 @@
-package com.develop.base_android.application.view.login
+package com.develop.base_android.view.login
 
 import com.develop.base_android.application.base.BaseViewModel
 

@@ -1,4 +1,4 @@
-package com.develop.base_android.application.view.login
+package com.develop.base_android.view.login
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,6 +25,7 @@ class LoginFragment: BaseVMFragment<LoginViewModel, FragmentLoginBinding>() {
         super.setupView()
 
         binding.txtLogin.setOnClickListener {
+           // Settings.ACCESS_TOKEN.put("TOKEN")
             pushTo(R.id.action_loginFragment_to_signUpFragment)
         }
     }

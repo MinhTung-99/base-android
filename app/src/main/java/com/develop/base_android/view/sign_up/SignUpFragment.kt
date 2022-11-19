@@ -1,4 +1,4 @@
-package com.develop.base_android.application.view.sign_up
+package com.develop.base_android.view.sign_up
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,6 +22,8 @@ class SignUpFragment : BaseVMFragment<SignUpViewModel, FragmentSignUpBinding>() 
 
     override fun setupView() {
         super.setupView()
+
+        //Toast.makeText(context, Settings.ACCESS_TOKEN.get(""), Toast.LENGTH_SHORT).show()
 
         binding.txtSignUp.setOnClickListener {
             popTo()
