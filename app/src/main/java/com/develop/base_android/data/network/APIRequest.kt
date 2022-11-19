@@ -54,10 +54,13 @@ class APIRequest(
 
             HTTPMethod.POST -> getService(apiService)
                 .post(router.url(), router.headers, router.parameters)
+
             HTTPMethod.PUT -> getService(apiService)
                 .put(router.url(), router.headers, router.parameters)
+
             HTTPMethod.DELETE -> getService(apiService)
                 .delete(router.url(), router.headers, router.parameters)
+
             HTTPMethod.IMAGE -> getService(apiService)
                 .uploadImage(router.url(), headers = hashMapOf(), router.image)
         }
