@@ -18,6 +18,8 @@ import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
+import javax.inject.Inject
+import javax.inject.Singleton
 
 @Keep
 object APIPath {
@@ -36,7 +38,10 @@ enum class HTTPError(val code: Int) {
     SERVER_ERROR(500)
 }
 
-class APIRequest(
+@Keep
+@Singleton
+class APIRequest @Inject constructor(
+    private val apiServiceNotToken: ApiServiceNotToken,
     val gson: Gson
 ) {
     companion object {
@@ -45,17 +50,17 @@ class APIRequest(
 
     inline fun <reified T> request(
         router: ApiRouter,
-        apiService: BaseApiService
+        apiService: String
     ): Flow<T> = flow {
         emit(gson.fromJson(getMethodCall(router, apiService).string()))
     }
 
     suspend inline fun <reified T> suspendRequest(
         router: ApiRouter,
-        needLogin: BaseApiService
-    ): T = gson.fromJson(getMethodCall(router, needLogin).string())
+        apiService: String
+    ): T = gson.fromJson(getMethodCall(router, apiService).string())
 
-    suspend fun getMethodCall(router: ApiRouter, apiService: BaseApiService): ResponseBody {
+    suspend fun getMethodCall(router: ApiRouter, apiService: String): ResponseBody {
         return when (router.method) {
 
             HTTPMethod.GET -> getService(apiService)
@@ -75,7 +80,7 @@ class APIRequest(
         }
     }
 
-    private fun getService(apiService: BaseApiService): BaseApiService = apiService
+    private fun getService(apiService: String): BaseApiService = apiServiceNotToken
 
 }
 

@@ -1,7 +1,6 @@
 package com.develop.base_android.data.network
 
 import com.develop.base_android.data.response.MyResponse
-import com.develop.base_android.injection.apiServiceNotToken
 import kotlinx.coroutines.flow.Flow
 
 fun APIRequest.getEntry(): Flow<MyResponse> =
@@ -10,5 +9,5 @@ fun APIRequest.getEntry(): Flow<MyResponse> =
             APIPath.entry(),
             HTTPMethod.GET
         ),
-        apiServiceNotToken
+        API_SERVICE_NOT_TOKEN
     )

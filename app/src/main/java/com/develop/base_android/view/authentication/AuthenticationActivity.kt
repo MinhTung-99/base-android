@@ -7,7 +7,11 @@ import com.develop.base_android.R
 import com.develop.base_android.application.base.BaseVMActivity
 import com.develop.base_android.application.base.BaseViewModel
 import com.develop.base_android.databinding.ActivityAuthenticationBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class AuthenticationActivity :
     BaseVMActivity<AuthenticationViewModel, ActivityAuthenticationBinding>() {
     override val viewModel: AuthenticationViewModel by viewModels()
@@ -25,6 +29,7 @@ class AuthenticationActivity :
     }
 }
 
-class AuthenticationViewModel : BaseViewModel() {
+@HiltViewModel
+class AuthenticationViewModel @Inject constructor(): BaseViewModel() {
 
 }

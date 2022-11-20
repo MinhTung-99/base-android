@@ -8,9 +8,11 @@ import com.develop.base_android.R
 import com.develop.base_android.application.base.BaseVMFragment
 import com.develop.base_android.application.base.pushTo
 import com.develop.base_android.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment: BaseVMFragment<LoginViewModel, FragmentLoginBinding>() {
-    override val viewModel: LoginViewModel by viewModels{LoginViewModel.Factory}
+    override val viewModel: LoginViewModel by viewModels()
 
     override fun makeViewBinding(
         inflater: LayoutInflater,

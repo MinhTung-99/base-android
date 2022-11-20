@@ -13,6 +13,8 @@ interface ApiServiceWithToken : BaseApiService
 
 interface RefreshTokenApiService : BaseApiService
 
+const val API_SERVICE_NOT_TOKEN = "API_SERVICE_NOT_TOKEN"
+
 interface BaseApiService {
 
     @GET
