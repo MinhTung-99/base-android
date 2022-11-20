@@ -80,7 +80,12 @@ class APIRequest @Inject constructor(
         }
     }
 
-    private fun getService(apiService: String): BaseApiService = apiServiceNotToken
+    private fun getService(apiService: String): BaseApiService {
+        return when (apiService) {
+            API_SERVICE_NOT_TOKEN -> apiServiceNotToken
+            else -> apiServiceNotToken
+        }
+    }
 
 }
 
