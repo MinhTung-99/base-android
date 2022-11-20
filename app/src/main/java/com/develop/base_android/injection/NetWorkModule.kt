@@ -1,7 +1,10 @@
 package com.develop.base_android.injection
 
+import android.content.Context
+import com.develop.base_android.application.MainApplication
 import com.develop.base_android.data.local.Settings
 import com.develop.base_android.data.network.HTTPError
+import com.develop.base_android.data.response.utils.isInternetAvailable
 import com.google.gson.Gson
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.sync.Mutex
@@ -9,6 +12,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
+import java.io.IOException
 
 object NetWorkModule {
 
@@ -19,7 +23,7 @@ object NetWorkModule {
     fun provideAuthClientBuilder(): OkHttpClient.Builder = OkHttpClient.Builder().apply {
         //if (BuildConfig.DEBUG) {
         addInterceptor(httpLoggingInterceptor)
-        //addInterceptor(networkConnectionInterceptor)
+        addInterceptor(networkConnectionInterceptor)
         //}
     }
 
@@ -89,4 +93,22 @@ object NetWorkModule {
                 .build()
                 .let(::proceed)
     }
+}
+
+class NetworkConnectionInterceptor : Interceptor {
+
+    @Throws(IOException::class)
+    override fun intercept(chain: Interceptor.Chain): Response {
+        if (!MainApplication.CONTEXT.isInternetAvailable()) {
+            throw NoConnectivityException()
+            // Throwing our custom exception 'NoConnectivityException'
+        }
+        val builder = chain.request().newBuilder()
+        return chain.proceed(builder.build())
+    }
+}
+
+class NoConnectivityException : IOException() {
+    override val message: String
+        get() = "No Internet Connection"
 }

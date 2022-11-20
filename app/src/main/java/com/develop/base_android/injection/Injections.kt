@@ -6,6 +6,8 @@ val httpLoggingInterceptor = Provider.provideLoggingInterceptor()
 
 val authInterceptor = NetWorkModule.AuthInterceptor(gson)
 
+val networkConnectionInterceptor = NetworkConnectionInterceptor()
+
 val client = NetWorkModule.provideAuthClient()
 
 val clientBuilder = NetWorkModule.provideAuthClientBuilder().build()
