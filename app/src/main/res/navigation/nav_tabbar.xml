@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_tabbar"
+    app:startDestination="@id/tabbarFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.develop.base_android.view.login.LoginFragment"
+        android:label="LoginFragment" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.develop.base_android.view.sign_up.SignUpFragment"
+        android:label="SignUpFragment" />
+    <fragment
+        android:id="@+id/tabbarFragment"
+        android:name="com.develop.base_android.application.base.tabbar.TabbarFragment"
+        android:label="TabbarFragment" />
+</navigation>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TabbarItemView">
+        <attr name="myIcon" format="integer" />
+        <attr name="selectedIcon" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="TabbarView">
+        <attr name="tabSelectedColor" format="color" />
+        <attr name="defaultColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="WheelPicker">
+        <attr name="wheel_data" format="reference" />
+        <attr name="wheel_selected_item_position" format="integer" />
+        <attr name="wheel_item_text_size" format="dimension" />
+        <attr name="wheel_item_text_color" format="color" />
+        <attr name="wheel_selected_item_text_color" format="color" />
+        <attr name="wheel_same_width" format="boolean" />
+        <attr name="wheel_maximum_width_text" format="string" />
+        <attr name="wheel_maximum_width_text_position" format="integer" />
+        <attr name="wheel_visible_item_count" format="integer" />
+        <attr name="wheel_item_space" format="dimension" />
+        <attr name="wheel_cyclic" format="boolean" />
+        <attr name="wheel_indicator" format="boolean" />
+        <attr name="wheel_indicator_color" format="color" />
+        <attr name="wheel_indicator_size" format="dimension" />
+        <attr name="wheel_curtain" format="boolean" />
+        <attr name="wheel_curtain_color" format="color" />
+        <attr name="wheel_atmospheric" format="boolean" />
+        <attr name="wheel_curved" format="boolean" />
+        <attr name="wheel_item_align" format="enum">
+            <enum name="center" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="wheel_font_family" format="reference" />
+        <attr name="wheel_font_path" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="my_edt_style">
+
+        <attr name="paddingStart" format="dimension"/>
+        <attr name="paddingTop" format="dimension"/>
+        <attr name="paddingEnd" format="dimension"/>
+        <attr name="paddingBottom" format="dimension"/>
+        <attr name="edt_textSize" format="dimension"/>
+        <attr name="is_verify" format="boolean"/>
+        <attr name="is_password_field" format="boolean"/>
+        <attr name="is_search_field" format="boolean"/>
+        <attr name="is_dropdown_field" format="boolean"/>
+        <attr name="single_line" format="boolean"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="my_tv_style">
+
+        <attr name="tv_paddingStart" format="dimension"/>
+        <attr name="tv_paddingTop" format="dimension"/>
+        <attr name="tv_paddingEnd" format="dimension"/>
+        <attr name="tv_paddingBottom" format="dimension"/>
+        <attr name="isFocus" format="boolean"/>
+        <attr name="is_dropdown_text" format="boolean"/>
+        <attr name="is_arrow_text" format="boolean"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="my_button_style">
+        <attr name="btn_paddingStart" format="dimension"/>
+        <attr name="btn_paddingTop" format="dimension"/>
+        <attr name="btn_paddingEnd" format="dimension"/>
+        <attr name="btn_paddingBottom" format="dimension"/>
+        <attr name="colors" format="enum">
+            <enum name="normal_color" value="0"/>
+            <enum name="red_color" value="1"/>
+            <enum name="star_image" value="2"/>
+            <enum name="not_image" value="3"/>
+        </attr>
+        <attr name="isAllCaps" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="my_rdo_style">
+        <attr name="padStart" format="dimension"/>
+        <attr name="padTop" format="dimension"/>
+        <attr name="padEnd" format="dimension"/>
+        <attr name="padBottom" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="my_switch_style">
+        <attr name="switchPadding" format="dimension"/>
+    </declare-styleable>
+
+</resources>

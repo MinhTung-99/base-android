@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="10dp"
+    android:background="@drawable/bg_tabbar"
+    android:weightSum="2">
+
+    <com.develop.base_android.application.base.tabbar.TabbarItemView
+        android:id="@+id/tab1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:tag="0"
+        app:selectedIcon="@drawable/ic_home_selected"
+        app:myIcon="@drawable/ic_home"/>
+
+    <com.develop.base_android.application.base.tabbar.TabbarItemView
+        android:id="@+id/tab2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:tag="1"
+        app:selectedIcon="@drawable/ic_backpack_selected"
+        app:myIcon="@drawable/ic_backpack"/>
+
+    <!--<com.develop.base_android.application.base.tabbar.TabbarItemView
+        android:id="@+id/tab3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:tag="2"
+        app:selectedIcon="@drawable/ic_mail_selected"
+        app:myIcon="@drawable/ic_email"/>
+
+    <com.develop.base_android.application.base.tabbar.TabbarItemView
+        android:id="@+id/tab4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:tag="3"
+        app:selectedIcon="@drawable/ic_user_selected"
+        app:myIcon="@drawable/ic_user"/>-->
+
+</androidx.appcompat.widget.LinearLayoutCompat>
