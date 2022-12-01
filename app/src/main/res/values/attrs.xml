@@ -1,5 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="HeaderView">
+        <attr name="title" format="string" />
+        <attr name="visible_back_button" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="input_view_style">
+
+        <attr name="title_input" format="string" />
+        <attr name="warn_input" format="string" />
+        <attr name="hint_input" format="string" />
+        <attr name="value_input" format="string" />
+        <attr name="visible_warn" format="boolean" />
+        <attr name="single_line" format="boolean" />
+
+        <attr name="input_type" format="enum">
+            <enum name="text" value="0" />
+            <enum name="password" value="1" />
+            <enum name="email" value="2" />
+            <enum name="number" value="3" />
+            <enum name="phone" value="4" />
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="my_text_view_style">
+        <attr name="text_color" format="enum">
+            <enum name="black" value="1" />
+            <enum name="primary" value="2" />
+            <enum name="warn" value="3" />
+            <enum name="white" value="4" />
+            <enum name="blue" value="5" />
+        </attr>
+
+        <attr name="font_type" format="enum">
+            <enum name="regular" value="1" />
+            <enum name="medium" value="2" />
+            <enum name="bold" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CustomItemMenuSetting">
+        <attr name="title_menu_setting" format="string" />
+        <attr name="visible_next" format="boolean" />
+        <attr name="isColorTitleRed" format="boolean" />
+        <attr name="visible_text_right" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CustomButtonSelectRole">
+        <attr name="type_click" format="enum">
+            <enum name="click" value="1" />
+            <enum name="not_click" value="2" />
+        </attr>
+        <attr name="nameRole" format="string" />
+    </declare-styleable>
+
+    <bool name="isTablet">false</bool>
+
+
+
     <declare-styleable name="TabbarItemView">
         <attr name="myIcon" format="integer" />
         <attr name="selectedIcon" format="integer" />
@@ -49,7 +107,7 @@
         <attr name="is_password_field" format="boolean"/>
         <attr name="is_search_field" format="boolean"/>
         <attr name="is_dropdown_field" format="boolean"/>
-        <attr name="single_line" format="boolean"/>
+
 
     </declare-styleable>
 

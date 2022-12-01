@@ -3,6 +3,7 @@ package com.develop.base_android.data.response.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import androidx.core.content.ContextCompat
 
 fun Context.isInternetAvailable(): Boolean {
     var result = false
@@ -18,4 +19,8 @@ fun Context.isInternetAvailable(): Boolean {
         else -> false
     }
     return result
+}
+
+fun Context.getAppCompactColor(int: Int): Int {
+    return ContextCompat.getColor(this, int)
 }
