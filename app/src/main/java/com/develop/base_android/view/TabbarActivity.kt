@@ -24,6 +24,8 @@ class TabbarActivity : BaseVMActivity<TabbarViewModel, ActivityTabbarBinding>() 
 
     override fun setupView(savedInstanceState: Bundle?) {
         super.setupView(savedInstanceState)
+
+        binding.tabbar.setDot(1, true)
     }
 
     override var rootId: Int? = R.id.tabbarFragment
