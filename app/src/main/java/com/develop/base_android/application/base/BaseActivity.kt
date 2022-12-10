@@ -3,6 +3,7 @@ package com.develop.base_android.application.base
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -12,6 +13,8 @@ import androidx.navigation.navOptions
 import androidx.viewbinding.ViewBinding
 import com.develop.base_android.R
 import com.develop.base_android.application.resource.customview.ProgressView
+import com.develop.base_android.application.resource.customview.ToastNotification
+import com.develop.base_android.databinding.ToastNotificationBinding
 
 abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
@@ -121,4 +124,19 @@ fun BaseActivity<*>.visibleFragment(): Fragment? {
     val navHostFragment: Fragment? =
         supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
     return navHostFragment?.childFragmentManager?.fragments?.get(0)
+}
+
+fun MyActivity.showToast(message: String) {
+    val defNotification = ToastNotification<ToastNotificationBinding>(this)
+        .setContentView {
+            ToastNotificationBinding.inflate(layoutInflater, it, false)
+        }
+        .setDuration(2000)
+        .setOnClickListener {
+            Toast.makeText(applicationContext, "click notification", Toast.LENGTH_SHORT)
+                .show()
+        }
+//    defNotification.binding?.content?.text = message
+
+    defNotification.show()
 }

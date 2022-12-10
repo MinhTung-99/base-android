@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.MutableLiveData
 import com.develop.base_android.application.base.BaseVMActivity
 import com.develop.base_android.application.base.BaseViewModel
+import com.develop.base_android.application.base.showToast
 import com.develop.base_android.databinding.ActivityTestBaseBinding
 import com.develop.base_android.view.dialog.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,6 +41,9 @@ class TestBaseActivity : BaseVMActivity<TestBaseViewModel, ActivityTestBaseBindi
                     }
                     bottomSheet.show(supportFragmentManager, "")
                 }
+                3 -> {
+                    showToast("NOTIFICATION")
+                }
             }
         }
     }
@@ -71,6 +75,7 @@ class TestBaseViewModel @Inject constructor() : BaseViewModel() {
         buttons.add(ButtonTestBaseModel("Dialog"))
         buttons.add(ButtonTestBaseModel("BottomSheet"))
         buttons.add(ButtonTestBaseModel("WheelPicker"))
+        buttons.add(ButtonTestBaseModel("ToastNotification"))
 
         buttonsLiveDate.postValue(buttons)
     }
