@@ -2,4 +2,10 @@
 <resources>
     <dimen name="header_height">110dp</dimen>
     <dimen name="header_radius">27dp</dimen>
+
+    <dimen name="WheelItemTextSize">24sp</dimen>
+    <dimen name="WheelItemSpace">12dp</dimen>
+    <dimen name="WheelIndicatorSize">2dp</dimen>
+    <dimen name="WheelMargins">8dp</dimen>
+    <dimen name="HeaderNormalHeight">114dp</dimen>
 </resources>

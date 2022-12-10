@@ -111,4 +111,20 @@
 
     <string name="message_delete_acc">アカウントを削除してもよろしいですか。</string>
     <string name="delete_acc">削除</string>
+
+
+    <string-array name="WheelArrayDefault">
+        <item>item 1</item>
+        <item>item 2</item>
+        <item>item 3</item>
+    </string-array>
+    <string-array name="WheelArrayWeek">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
 </resources>
