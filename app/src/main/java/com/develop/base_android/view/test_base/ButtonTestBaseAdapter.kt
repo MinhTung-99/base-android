@@ -1,6 +1,7 @@
 package com.develop.base_android.view.test_base
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.develop.base_android.application.base.BaseAdapter
@@ -8,7 +9,7 @@ import com.develop.base_android.databinding.ItemButtonTestBaseBinding
 import com.develop.base_android.resource.utils.setOnSingleClick
 
 class ButtonTestBaseAdapter(
-    private val callBack: (pos: Int) -> Unit
+    private val callBack: (pos: Int, view: View) -> Unit
 ) : BaseAdapter<ButtonTestBaseModel>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -16,7 +17,7 @@ class ButtonTestBaseAdapter(
         val viewHolder = ButtonTestBaseViewHolder(binding)
 
         binding.btnTestBase.setOnSingleClick {
-            callBack.invoke(viewHolder.adapterPosition)
+            callBack.invoke(viewHolder.adapterPosition, binding.root)
         }
 
         return viewHolder
